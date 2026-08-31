@@ -167,6 +167,99 @@ Run the application:
 flutter run
 ```
 
+## Local Supabase for Integration Testing
+
+CarKeep uses a local Supabase environment for automated integration testing.
+
+This allows the integration tests to run against a real PostgreSQL database, Supabase Auth, Storage, RLS policies, and other backend services without modifying the hosted CarKeep database.
+
+```text
+Unit/Widget Tests
+        ↓
+Fake dependencies
+
+Integration Tests
+        ↓
+Local Supabase + Docker
+        ↓
+PostgreSQL + Auth + Storage + RLS
+```
+
+### Requirements
+
+- Docker Desktop
+- Node.js
+- Supabase CLI
+
+### Start the Local Test Environment
+
+From the project root:
+
+```bash
+npx supabase start
+```
+
+After startup, Supabase provides local URLs such as:
+
+```text
+API URL: http://127.0.0.1:54321
+Studio URL: http://127.0.0.1:54323
+```
+
+The local testing environment includes:
+
+- PostgreSQL
+- Supabase Authentication
+- Storage
+- Realtime
+- Supabase Studio
+
+### Database Schema
+
+The CarKeep database schema used by the integration tests is stored in:
+
+```text
+supabase/migrations/
+```
+
+To reset the local database and rebuild it from the migrations:
+
+```bash
+npx supabase db reset
+```
+
+This provides a clean database state for integration testing.
+
+### Test Storage
+
+The local environment contains the private Storage bucket:
+
+```text
+vehicle-documents
+```
+
+Its local configuration is stored in:
+
+```text
+supabase/config.toml
+```
+
+### Managing the Local Environment
+
+Check local Supabase status:
+
+```bash
+npx supabase status
+```
+
+Stop the local test environment:
+
+```bash
+npx supabase stop
+```
+
+> The local Supabase environment is intended for development and integration testing. Production secrets, service role keys, passwords, and access tokens should never be committed to the repository.
+
 ## Platforms
 
 CarKeep is built with Flutter and targets:
