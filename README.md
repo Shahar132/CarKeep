@@ -6,6 +6,7 @@ The goal is to keep vehicle information, maintenance history, insurance, annual 
 
 ## Demo
 
+https://github.com/user-attachments/assets/e3a46d70-68e0-4329-8b78-6daa60774a88
 
 ## Features
 
