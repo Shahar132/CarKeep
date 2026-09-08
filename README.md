@@ -6,7 +6,6 @@ The goal is to keep vehicle information, maintenance history, insurance, annual 
 
 ## Demo
 
-![CarKeep Demo](assets/demo/carkeep_demo.gif)
 
 ## Features
 
